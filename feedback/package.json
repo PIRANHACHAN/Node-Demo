@@ -1,0 +1,26 @@
+{
+  "name": "feedback",
+  "version": "0.0.1",
+  "description": "留言板",
+  "main": "app.js",
+  "dependencies": {
+    "art-template": "^4.13.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PIRANHACHAN/Node-Demo.git"
+  },
+  "keywords": [
+    "feedback"
+  ],
+  "author": "PIRANHA",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/PIRANHACHAN/Node-Demo/issues"
+  },
+  "homepage": "https://github.com/PIRANHACHAN/Node-Demo#readme"
+}

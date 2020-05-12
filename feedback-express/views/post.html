@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="../public/lib/bootstrap-3.3.7-dist/css/bootstrap.min.css"
+    />
+    <title>留言板</title>
+  </head>
+  <body>
+    <!-- header -->
+    <div class="header container">
+      <div class="page-header">
+        <h1><a href="/">首页</a><small>发表评论</small></h1>
+      </div>
+    </div>
+    <!-- body -->
+    <div class="container">
+      <!-- 提交表单 -->
+      <form action="/post" method="post">
+        <!-- 用户姓名 -->
+        <div class="form-group">
+          <label for="input_name">您的姓名</label>
+          <input
+            type="text"
+            class="form-control"
+            name="name"
+            required
+            minlength="2"
+            maxlength="10"
+            placeholder="请输入您的姓名"
+            id="input_name"
+          />
+        </div>
+        <!-- 用户输入内容 -->
+        <div class="form-group">
+          <label for="textarea_message">留言内容</label>
+          <textarea
+            class="form-control"
+            name="message"
+            cols="30"
+            rows="10"
+            required
+            minlength="5"
+            maxlength="20"
+            id="textarea_message"
+          ></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">发表</button>
+      </form>
+    </div>
+  </body>
+</html>
