@@ -35,12 +35,26 @@ router.post('/customers/new', function (req, res) {
 
 //渲染编辑页面
 router.get('/customers/edit', function (req, res) {
-  //
+  crudFiles.findById(parseInt(req.query.id), function (err, customer) {
+    if (err) {
+      res.status(500).send('服务器错误！')
+      return
+    }
+    res.render('edit.html', {
+      customer: customer,
+    })
+  })
 })
 
 //处理编辑请求
 router.post('/customers/edit', function (req, res) {
-  //
+  crudFiles.updateById(req.body, function (err) {
+    if (err) {
+      res.status(500).send('服务器错误！')
+      return
+    }
+    res.redirect('/customers')
+  })
 })
 
 //处理删除请求

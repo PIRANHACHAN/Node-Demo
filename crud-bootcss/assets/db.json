@@ -1,18 +1,1 @@
-{
-  "customers": [
-    {
-      "name": "张三",
-      "gender": "0",
-      "phoneNum": "13800138000",
-      "order": "0",
-      "id": 1
-    },
-    {
-      "name": "晋太元中",
-      "gender": "0",
-      "phoneNum": "15626242128",
-      "order": "1",
-      "id": 2
-    }
-  ]
-}
+{"customers":[{"name":"张无","gender":"1","phoneNum":"13800168760","order":"1","id":1},{"name":"李四","gender":"1","phoneNum":"15626248128","order":"0","id":2},{"name":"王五","gender":"1","phoneNum":"980","order":"0","id":3}]}

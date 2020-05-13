@@ -57,8 +57,8 @@
                 >客户管理<span class="sr-only">(current)</span></a
               >
             </li>
-            <li class="active"><a href="/customers/new">添加客户</a></li>
-            <li><a href="/customers/edit">修改客户</a></li>
+            <li><a href="/customers/new">添加客户</a></li>
+            <li class="active"><a href="/customers/edit">修改客户</a></li>
             <li><a href="#">分析</a></li>
             <li><a href="#">导出</a></li>
           </ul>
@@ -66,12 +66,14 @@
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
           <h1 class="page-header">添加客户</h1>
           <div class="table-responsive">
-            <form action="/customers/new" method="POST">
+            <form action="/customers/edit" method="POST">
+              <input type="hidden" name="id" value="{{customer.id}}" />
               <div class="form-group">
                 <label for="exampleInputName">姓名</label>
                 <input
                   type="text"
                   name="name"
+                  value="{{customer.name}}"
                   class="form-control"
                   id="exampleInputName"
                   placeholder="请输入客户姓名"
@@ -105,6 +107,7 @@
                 <input
                   type="number"
                   name="phoneNum"
+                  value="{{customer.phoneNum}}"
                   class="form-control"
                   id="exampleInputPhoneNum"
                   placeholder="请输入客户手机号码"
@@ -134,7 +137,7 @@
                 </div>
               </div>
 
-              <button type="submit" class="btn btn-success">提交</button>
+              <button type="submit" class="btn btn-success">提交修改</button>
             </form>
           </div>
         </div>

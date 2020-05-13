@@ -18,6 +18,22 @@ exports.find = function (callback) {
   })
 }
 
+//根据id获取客户信息
+exports.findById = function (id, callback) {
+  fs.readFile(filePath, 'utf8', function (err, data) {
+    if (err) {
+      callback(err)
+      return
+    }
+
+    let customers = JSON.parse(data).customers
+    let ret = customers.find(function (item) {
+      return item.id === id
+    })
+    callback(null, ret)
+  })
+}
+
 //添加保存客户
 exports.save = function (customer, callback) {
   fs.readFile(filePath, 'utf8', function (err, data) {
@@ -27,7 +43,8 @@ exports.save = function (customer, callback) {
     }
     let customers = JSON.parse(data).customers
     //处理客户id
-    customer.id = customers[customers.length - 1].id + 1
+    //let foo = customers[customers.length - 1].id + 10
+    customer.id = parseInt(customers[customers.length - 1].id + 1)
     customers.push(customer)
     let fileData = JSON.stringify({
       customers: customers,
@@ -43,9 +60,37 @@ exports.save = function (customer, callback) {
   })
 }
 
-//更新客户
-exports.update = function () {
-  //
+//更新编辑客户
+exports.updateById = function (customer, callback) {
+  fs.readFile(filePath, 'utf8', function (err, data) {
+    if (err) {
+      callback(err)
+      return
+    }
+    let customers = JSON.parse(data).customers
+
+    customer.id = parseInt(customer.id)
+
+    let ctm = customers.find(function (item) {
+      return item.id === customer.id
+    })
+
+    for (let key in customer) {
+      ctm[key] = customer[key]
+    }
+
+    let fileData = JSON.stringify({
+      customers: customers,
+    })
+    //客户信息写入文件
+    fs.writeFile(filePath, fileData, function (err) {
+      if (err) {
+        callback(err)
+        return
+      }
+      callback(null)
+    })
+  })
 }
 
 //删除客户

@@ -58,7 +58,7 @@
               >
             </li>
             <li><a href="/customers/new">添加客户</a></li>
-            <li><a href="#">汇总</a></li>
+            <li><a href="/customers/edit">修改客户</a></li>
             <li><a href="#">分析</a></li>
             <li><a href="#">导出</a></li>
           </ul>
@@ -83,6 +83,7 @@
                   <th>性别</th>
                   <th>手机号码</th>
                   <th>订单状态</th>
+                  <th>修改信息</th>
                 </tr>
               </thead>
               <tbody>
@@ -93,6 +94,10 @@
                   <td>{{$value.gender}}</td>
                   <td>{{$value.phoneNum}}</td>
                   <td>{{$value.order}}</td>
+                  <td>
+                    <a href="/customers/edit?id={{$value.id}}">编辑</a>
+                    <a href="/customers/edit?id={{$value.id}}">删除</a>
+                  </td>
                 </tr>
                 {{/each}}
               </tbody>
