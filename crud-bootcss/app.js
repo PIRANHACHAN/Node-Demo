@@ -12,7 +12,7 @@ app.use('/node_modules', express.static(__dirname + '/node_modules'))
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
-//
+//挂载路由
 app.use(router)
 
 app.listen(3000, function () {
