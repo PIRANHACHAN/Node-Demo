@@ -94,6 +94,28 @@ exports.updateById = function (customer, callback) {
 }
 
 //删除客户
-exports.delete = function () {
-  //
+exports.deleteById = function (id, callback) {
+  fs.readFile(filePath, 'utf8', function (err, data) {
+    if (err) {
+      callback(err)
+      return
+    }
+    let customers = JSON.parse(data).customers
+    let deleteId = customers.findIndex(function (item) {
+      return item.id === parseInt(id)
+    })
+
+    customers.splice(deleteId, 1)
+
+    let fileData = JSON.stringify({
+      customers: customers,
+    })
+    fs.writeFile(filePath, fileData, function (err) {
+      if (err) {
+        callback(err)
+        return
+      }
+      callback(null)
+    })
+  })
 }

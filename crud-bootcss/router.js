@@ -59,7 +59,13 @@ router.post('/customers/edit', function (req, res) {
 
 //处理删除请求
 router.get('/customers/delete', function (req, res) {
-  //
+  crudFiles.deleteById(req.body.id, function (err) {
+    if (err) {
+      res.status(500).send('服务器错误！')
+      return
+    }
+    res.redirect('/customers')
+  })
 })
 
 module.exports = router

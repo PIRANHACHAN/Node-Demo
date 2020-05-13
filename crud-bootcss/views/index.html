@@ -91,12 +91,12 @@
                 <tr>
                   <td>{{$value.id}}</td>
                   <td>{{$value.name}}</td>
-                  <td>{{$value.gender}}</td>
+                  <td>{{$value.gender==0?"男":"女"}}</td>
                   <td>{{$value.phoneNum}}</td>
-                  <td>{{$value.order}}</td>
+                  <td>{{$value.order==0?"未完成":"已完成"}}</td>
                   <td>
                     <a href="/customers/edit?id={{$value.id}}">编辑</a>
-                    <a href="/customers/edit?id={{$value.id}}">删除</a>
+                    <a href="/customers/delete?id={{$value.id}}">删除</a>
                   </td>
                 </tr>
                 {{/each}}
