@@ -3,11 +3,11 @@ const express = require('express')
 
 const router = express.Router()
 
-const crudFiles = require('./crudfiles')
+const CustomerCRUD = require('./cruddb-mongo')
 
 //渲染首页
 router.get('/customers', function (req, res) {
-  crudFiles.find(function (err, customers) {
+  CustomerCRUD.find(function (err, customers) {
     if (err) {
       res.status(500).send('服务器错误！')
       return
@@ -24,7 +24,7 @@ router.get('/customers/new', function (req, res) {
 })
 //处理添加客户
 router.post('/customers/new', function (req, res) {
-  crudFiles.save(req.body, function (err) {
+  new CustomerCRUD(req.body).save(function (err) {
     if (err) {
       res.status(500).send('服务器错误！')
       return
@@ -35,7 +35,8 @@ router.post('/customers/new', function (req, res) {
 
 //渲染编辑页面
 router.get('/customers/edit', function (req, res) {
-  crudFiles.findById(parseInt(req.query.id), function (err, customer) {
+  let id = req.query.id.replace(/"/g, '')
+  CustomerCRUD.findById(id, function (err, customer) {
     if (err) {
       res.status(500).send('服务器错误！')
       return
@@ -48,7 +49,8 @@ router.get('/customers/edit', function (req, res) {
 
 //处理编辑请求
 router.post('/customers/edit', function (req, res) {
-  crudFiles.updateById(req.body, function (err) {
+  let id = req.body.id.replace(/"/g, '')
+  CustomerCRUD.findByIdAndUpdate(id, req.body, function (err) {
     if (err) {
       res.status(500).send('服务器错误！')
       return
@@ -59,7 +61,8 @@ router.post('/customers/edit', function (req, res) {
 
 //处理删除请求
 router.get('/customers/delete', function (req, res) {
-  crudFiles.deleteById(req.body.id, function (err) {
+  let id = req.query.id.replace(/"/g, '')
+  CustomerCRUD.findByIdAndRemove(id, function (err) {
     if (err) {
       res.status(500).send('服务器错误！')
       return
